@@ -22,10 +22,21 @@ namespace ActivosDerecho.Models
         [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Usuario no válido")]
         public String usuario { get; set; }
 
+        /*
+         * (?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$  
+         * 
+         * Contraseñas que contengan al menos una letra mayúscula.
+         * Contraseñas que contengan al menos una letra minúscula.
+         * Contraseñas que contengan al menos un número o caracter especial.
+         * Contraseñas cuya longitud sea como mínimo 8 caracteres.
+         * Contraseñas cuya longitud máxima no debe ser arbitrariamente limitada.
+         * 
+         * */
+
         [Display(Name = "Contraseña Usuario")]
         [Required(ErrorMessage = "Contraseña Requerida")]
         [StringLength(128, ErrorMessage = "Contraseña no válida")]
-        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Contraseña no válida")]
+        //[RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Contraseña no válida")]
         public String passUsuario { get; set; }
 
 
@@ -37,7 +48,7 @@ namespace ActivosDerecho.Models
         [Display(Name = "Contraseña Correo")]
         [Required(ErrorMessage = "Contraseña Requerida")]
         [StringLength(128, ErrorMessage = "Contraseña no válida")]
-        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Contraseña no válida")]
+        //[RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Contraseña no válida")]
         public String passCorreo { get; set; }
         
     }
