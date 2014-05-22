@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Eliminar";
+}
+
+<!--                    Metodo     Controladora-->
+@using (Html.BeginForm("Eliminar", "Activos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <!--Aqui modifiqué la clase modal para que se viera desde el inicio que abre la pagina-->
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Eliminación</h4>
+                </div>
+                <div class="modal-body">
+                    <!--Imprimo la placa del activo en la pantalla del modal-->
+                    ¿Seguro que desea eliminar el activo con placa @ViewBag.placa ?
+                </div>
+                <div class="modal-footer">
+                    <!--Los botones, nuevamente es importante el name que les demos, el parametro
+                        del HTTPPOST Eliminar debe tener el mismo nombre-->
+                    <button type="submit" class="btn btn-danger" name="btn" value="Aceptar">Eliminar</button>
+                    <button type="submit" class="btn btn-primary" name="btn" value="Cancelar">Cancelar</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script type="text/javascript">
+        $(".modal").addClass("modalVer");
+    </script>
+}

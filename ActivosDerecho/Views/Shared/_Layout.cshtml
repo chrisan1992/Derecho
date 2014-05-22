@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+    <title>Facultad Derecho</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/js/jquery-1.11.0.min.js"></script>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/Estilo.css" rel="stylesheet" />
+    <script src="~/js/bootstrap.js"></script>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+    <!--Encabezado de la página-->
+    <header style="">
+        <section class="container">
+            <section>
+                <section id="seccionBanner">
+                    <img src="~/imagenes/banner.png" class="banner" alt="" />
+                </section>
+            </section>
+            <nav class="navbar navbar-default navbar-inverse" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Control de Activos", "Index", "Home", null, new { @class = "navbar-brand" })
+
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                @Html.ActionLink("Control de Activos", "Index", "Home")
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activos<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Agregar", "Agregar", "Activos")</li>
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("Consultar", "Index", "Activos")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contraseñas<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Agregar", "Agregar", "Contrasenas")</li>
+                                </ul>
+                            </li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:steelblue;"> @User.Identity.Name <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            @Html.ActionLink("Administrar", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage", style = "color:white;" })
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            @Html.ActionLink("Salir", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "logOffLink" })
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    @Html.ActionLink("Iniciar Sesión", "Login", "Account", routeValues: null, htmlAttributes: new { style = "color:steelblue;" })
+                                </li>
+
+                            }
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </nav>
+        </section>
+    </header>
+    <!--Cuerpo de la página-->
+    <section>
+        <section class="container contenidoPrincipal">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </section>
+    </section>
+    <!--Pie de página-->
+    <footer></footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

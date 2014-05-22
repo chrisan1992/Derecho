@@ -1,0 +1,89 @@
+﻿@*@model IEnumerable<ActivosDerecho.Models.Activo>*@
+
+@model PagedList.IPagedList<ActivosDerecho.Models.Contrasena>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section style="width:100%;">
+    <h2 style="color:steelblue;">Contraseñas</h2>
+    <div class="col-lg-6">
+        @using (Html.BeginForm())
+        {<!--Por esto hay que hacer un HTTPPOST para Index-->
+            <div class="input-group">
+                <input type="text" name="filtro" class="form-control" placeholder="Busqueda...">
+                <span class="input-group-addon"><button class="" type="submit">Buscar</button></span>
+            </div>
+        }
+    </div>
+    <div class="col-lg-6">
+        @Html.ActionLink("Agregar", "Agregar", new { }, new { @class = "btn btn-success right", style = "float:right;margin-bottom:20px;" })
+    </div>
+    <br />
+    <section style="width:100%;">
+        <section class="table-responsive">
+            <table class="table table-striped" style="width:100%;">
+                <thead>
+                    <!--Los titulos de las columnas de la tabla-->
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Usuario Computadora</th>
+                        <th>Contraseña Usuario</th>
+                        <th>Correo</th>
+                        <th>Contraseña Correo</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Los datos de las columnas de la tabla-->
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(x => item.nombre)</td>
+                            <td>@Html.DisplayFor(x => item.usuario)</td>
+                            <td>@Html.DisplayFor(x => item.passUsuario)</td>
+                            <td>@Html.DisplayFor(x => item.correo)</td>
+                            <td>@Html.DisplayFor(x => item.passCorreo)</td>
+                            <!--Los botones para editar y eliminar que redirigen a acciones-->
+                            <td>@Html.ActionLink("Editar", "Editar", new { id = @item.id }, new { @class = "btn btn-primary" })</td>
+                            <td>@Html.ActionLink("Eliminar", "Eliminar", new { id = @item.id }, new { @class = "btn btn-danger" })</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <!--Para la paginacion de la tabla-->
+            <div>
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                of @Model.PageCount
+                @if (Model.HasPreviousPage)
+                {
+                    @Html.ActionLink("<<", "Index", new { pagina = 1 })
+                    @Html.Raw(" ")
+                    @Html.ActionLink("< Prev", "Index", new { pagina = Model.PageNumber - 1 })
+                }
+                else
+                {
+                    @:<<
+                    @Html.Raw(" ")
+                    @:< Prev
+                }
+                @if (Model.HasNextPage)
+                {
+                    @Html.ActionLink("Next >", "Index", new { pagina = Model.PageNumber + 1 })
+                    @Html.Raw(" ")
+                    @Html.ActionLink(">>", "Index", new { pagina = Model.PageCount })
+                }
+                else
+                {
+                    @:Next >
+                    @Html.Raw(" ")
+                    @:>>
+                }
+
+            </div>
+        </section>
+    </section>
+</section>
+

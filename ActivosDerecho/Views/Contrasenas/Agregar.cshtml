@@ -1,0 +1,93 @@
+﻿@model ActivosDerecho.Models.Contrasena
+@{
+    ViewBag.Title = "Agregar Contraseña";
+}
+
+<!--                    Metodo     Controladora a la cual va redirigir la accion del boton-->
+@using (Html.BeginForm("Agregar", "Contrasenas", FormMethod.Post, new { autocomplete = "off" }))
+{
+    <!--Para la validacion de los datos-->
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <section class="row">
+        <h2 style="color:steelblue;">Agregar nuevo inventario</h2>
+        <br />
+        <!--Nombre-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <section class="col-md-12 col-sm-12 linea">
+                    <div class="input-group">
+                        <span class="input-group-addon">@Html.LabelFor(u => u.nombre, new { @class = "" })</span>
+                        @Html.TextBoxFor(u => u.nombre, new { @class = "form-control", name = "nombreUsuario", placeholder = "Nombre..." })
+                    </div>
+                    @Html.ValidationMessageFor(u => u.nombre, null, new { @class = "mensajeError" })
+                </section>
+                <section class="col-md-6 col-sm-12 linea">
+                    <div class="input-group">
+                        <span class="input-group-addon">@Html.LabelFor(u => u.usuario, new { @class = "" })</span>
+                        @Html.TextBoxFor(u => u.usuario, new { @class = "form-control", name = "usuario", placeholder = "Usuario..." })
+                    </div>
+                    @Html.ValidationMessageFor(u => u.usuario, null, new { @class = "mensajeError" })
+                </section>
+                <section class="col-md-6 col-sm-12 linea">
+                    <div class="input-group">
+                        <span class="input-group-addon">@Html.LabelFor(u => u.passUsuario, new { @class = "" })</span>
+                        @Html.TextBoxFor(u => u.passUsuario, new { @class = "form-control", name = "passUsuario", placeholder = "Contraseña...", type = "password" })
+                    </div>
+                    @Html.ValidationMessageFor(u => u.passUsuario, null, new { @class = "mensajeError" })
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon">@Html.LabelFor(u => u.passUsuarioComparar, new { @class = "" })</span>
+                        @Html.TextBoxFor(u => u.passUsuarioComparar, new { @class = "form-control", name = "passUsuarioConfirmar", placeholder = "Contraseña...", type = "password" })
+                    </div>
+                    @Html.ValidationMessageFor(u => u.passUsuarioComparar, null, new { @class = "mensajeError" })
+                </section>
+                <section class="col-md-6 col-sm-12 linea">
+                    <div class="input-group">
+                        <span class="input-group-addon">@Html.LabelFor(u => u.correo, new { @class = "" })</span>
+                        @Html.TextBoxFor(u => u.correo, new { @class = "form-control", name = "correo", placeholder = "Correo institucional...", type = "email" })
+                    </div>
+                    @Html.ValidationMessageFor(u => u.correo, null, new { @class = "mensajeError" })
+                </section>
+                <section class="col-md-6 col-sm-12 linea">
+                    <div class="input-group">
+                        <span class="input-group-addon">@Html.LabelFor(u => u.passCorreo, new { @class = "" })</span>
+                        @Html.TextBoxFor(u => u.passCorreo, new { @class = "form-control", name = "contrasenaCorreo", placeholder = "Contraseña...", type = "password" })
+                    </div>
+                    @Html.ValidationMessageFor(u => u.passCorreo, null, new { @class = "mensajeError" })
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon">@Html.LabelFor(u => u.passCorreoComparar, new { @class = "" })</span>
+                        @Html.TextBoxFor(u => u.passCorreoComparar, new { @class = "form-control", placeholder = "Contraseña...", type = "password" })
+                    </div>
+                    @Html.ValidationMessageFor(u => u.passCorreoComparar, null, new { @class = "mensajeError" })
+                </section>
+                <section class="col-md-6 col-sm-12 linea">
+                    <br />
+                    <!--El HTTPPOST de Aregar recibe el Modelo y aparte recibe un string llamado btn
+                    es importante que se llame igual que el name de los botones, lo que los va a
+                    diferenciar será el value del botón, en este caso tenemos Guardar y Cancelar-->
+                    <button type="submit" name="btn" value="Guardar" class="btn btn-success">Guardar</button>
+                    <!--tuve que hacer Action Link porque si hago un Boton normal los validadores se activan-->
+                    @Html.ActionLink("Cancelar", "Index", new { }, new { @class = "btn btn-danger" })
+                </section>
+            </div>
+        </div>
+    </section>
+}
+<!--Para evitar que se rellenen los campos en la interfaz-->
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        try {
+            $("input[type='text']").each(function () {
+                $(this).attr("value", "");
+            });
+            $("input[type='password']").each(function () {
+                $(this).attr("value", "");
+            });
+        }
+        catch (e)
+        { }
+    });
+</script>

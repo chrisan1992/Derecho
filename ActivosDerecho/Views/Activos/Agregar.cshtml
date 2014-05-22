@@ -1,0 +1,100 @@
+﻿@model ActivosDerecho.Models.Activo
+
+@{
+    ViewBag.Title = "Agregar";
+}
+
+
+<!--                    Metodo     Controladora a la cual va redirigir la accion del boton-->
+@using (Html.BeginForm("Agregar", "Activos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <!--Para la validacion de los datos-->
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <section class="row">
+        <h2 style="color:steelblue;">Agregar nuevo inventario</h2>
+        <br />
+        <section class="row">
+            <!--placa-->
+            <section class="col-md-6 col-sm-12 linea">
+                @Html.LabelFor(u => u.placa, new { @class = "labelGrande" })
+                <br />
+                @Html.TextBoxFor(u => u.placa, new { @class = "form-control" })
+                @Html.ValidationMessageFor(u => u.placa, null, new { @class = "mensajeError" })
+            </section>
+
+            <!--Nombre y Descripcion-->
+            <section class="col-md-6 col-sm-12 linea">
+                @Html.LabelFor(u => u.nombreDescripcion, new { @class = "labelGrande" })
+                <br />
+                @Html.TextBoxFor(u => u.nombreDescripcion, new { @class = "form-control" })
+                @Html.ValidationMessageFor(u => u.nombreDescripcion, null, new { @class = "mensajeError" })
+            </section>
+        </section>
+        <section class="row">
+            <!--Espacio Físico-->
+            <section class="col-md-6 col-sm-12 linea">
+                @Html.LabelFor(u => u.espacioFisico, new { @class = "labelGrande" })
+                <br />
+                @Html.TextBoxFor(u => u.espacioFisico, new { @class = "form-control" })
+                @Html.ValidationMessageFor(u => u.espacioFisico, null, new { @class = "mensajeError" })
+            </section>
+
+            <!--Encargado-->
+            <section class="col-md-6 col-sm-12 linea">
+                @Html.LabelFor(u => u.encargado, new { @class = "labelGrande" })
+                <br />
+                @Html.TextBoxFor(u => u.encargado, new { @class = "form-control" })
+                @Html.ValidationMessageFor(u => u.encargado, null, new { @class = "mensajeError" })
+            </section>
+        </section>
+        <section class="row">
+            <!--Estado-->
+            <section class="col-md-6 col-sm-12 linea">
+                @Html.LabelFor(u => u.estado, new { @class = "labelGrande" })
+                <!--Aqui va la lista dropdown con las opciones para seleccionar-->
+                <br />
+                @Html.DropDownListFor(u => u.estado,
+                new SelectList(
+                    new List<Object> {
+                        new {value = 0, text = "Excelente"},
+                        new {value = 1, text = "Bueno"},
+                        new {value = 2, text = "Malo"}
+                    },
+                    "value",
+                    "text",
+              3), new { @class = "form-control" })
+                @Html.ValidationMessageFor(u => u.estado, null, new { @class = "mensajeError" })
+            </section>
+
+            <!--Inventario Por-->
+            <section class="col-md-6 col-sm-12 linea">
+                @Html.LabelFor(u => u.inventarioPor, new { @class = "labelGrande" })
+                <br />
+                @Html.TextBoxFor(u => u.inventarioPor, new { @class = "form-control" })
+                @Html.ValidationMessageFor(u => u.inventarioPor, null, new { @class = "mensajeError" })
+            </section>
+        </section>
+        <section class="row">
+            <!--Conciliacion-->
+            <section class="col-md-6 col-sm-12 linea">
+                @Html.LabelFor(u => u.conciliacion, new { @class = "labelGrande" })
+                <br />
+                @Html.TextBoxFor(u => u.conciliacion, new { @class = "form-control", placeholder="NO" })
+                @Html.ValidationMessageFor(u => u.conciliacion, null, new { @class = "mensajeError" })
+            </section>
+            <!--Botones-->
+            <section class="col-md-6 col-sm-12 linea">
+                <br />
+                <!--El HTTPPOST de Aregar recibe el Modelo y aparte recibe un string llamado btn
+                    es importante que se llame igual que el name de los botones, lo que los va a
+                    diferenciar será el value del botón, en este caso tenemos Guardar y Cancelar-->
+                <button type="submit" name="btn" value="Guardar" class="btn btn-success">Guardar</button>
+                <!--tuve que hacer Action Link porque si hago un Boton normal los validadores se activan-->
+                @Html.ActionLink("Cancelar", "Index", new { }, new { @class="btn btn-danger"})
+            </section>
+        </section>
+    </section>
+
+}
