@@ -18,17 +18,17 @@ namespace ActivosDerecho.Models
 
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "Nombre y Descripción")]
-        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Campo no válido")]
+        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?)*", ErrorMessage = "Campo no válido")]
         public String nombreDescripcion { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "Espacio Físico")]
-        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Campo no válido")]
+        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?)*", ErrorMessage = "Campo no válido")]
         public String espacioFisico { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "Encargado")]
-        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Campo no válido")]
+        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?)*", ErrorMessage = "Campo no válido")]
         public String encargado { get; set; }
 
         [Display(Name = "Estado")]
@@ -36,12 +36,12 @@ namespace ActivosDerecho.Models
 
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "Inventario Por")]
-        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Campo no válido")]
+        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?)*", ErrorMessage = "Campo no válido")]
         public String inventarioPor { get; set; }
 
-        [Required(ErrorMessage = "Campo Requerido")]
+        //[Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "Conciliación OAF")]
-        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+\.?)*", ErrorMessage = "Campo no válido")]
+        [RegularExpression(@"[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ0-9\/_]+\.?)*", ErrorMessage = "Campo no válido")]
         public String conciliacion { get; set; }
     }
 
