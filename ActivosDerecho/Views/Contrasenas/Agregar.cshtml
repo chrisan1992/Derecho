@@ -19,7 +19,7 @@
                 <section class="col-md-12 col-sm-12 linea">
                     <div class="input-group">
                         <span class="input-group-addon">@Html.LabelFor(u => u.nombre, new { @class = "" })</span>
-                        @Html.TextBoxFor(u => u.nombre, new { @class = "form-control", name = "nombreUsuario", placeholder = "Nombre..." })
+                        @Html.TextBoxFor(u => u.nombre, new { @class = "form-control", name = "nombreUsuario", placeholder = "Nombre...", title = "Some tooltip text!" })
                     </div>
                     @Html.ValidationMessageFor(u => u.nombre, null, new { @class = "mensajeError" })
                 </section>
@@ -27,6 +27,7 @@
                     <div class="input-group">
                         <span class="input-group-addon">@Html.LabelFor(u => u.usuario, new { @class = "" })</span>
                         @Html.TextBoxFor(u => u.usuario, new { @class = "form-control", name = "usuario", placeholder = "Usuario..." })
+                        <div class="alert alert-info">El usuario que utiliza para su computadora.</div>
                     </div>
                     @Html.ValidationMessageFor(u => u.usuario, null, new { @class = "mensajeError" })
                 </section>
@@ -47,6 +48,7 @@
                     <div class="input-group">
                         <span class="input-group-addon">@Html.LabelFor(u => u.correo, new { @class = "" })</span>
                         @Html.TextBoxFor(u => u.correo, new { @class = "form-control", name = "correo", placeholder = "Correo institucional...", type = "email" })
+                        <div class="alert alert-info">Su correo institucional.</div>
                     </div>
                     @Html.ValidationMessageFor(u => u.correo, null, new { @class = "mensajeError" })
                 </section>
