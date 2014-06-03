@@ -81,12 +81,12 @@ namespace ActivosDerecho.Controllers
             tabla.Columns.Add(columna);
             columna = new DataColumn("Encargado", typeof(String));
             tabla.Columns.Add(columna);
-            columna = new DataColumn("Estado", typeof(int));
-            tabla.Columns.Add(columna);
-            columna = new DataColumn("Inventario Por", typeof(String));
+            /*columna = new DataColumn("Estado", typeof(int));
+            tabla.Columns.Add(columna);*/
+            /*columna = new DataColumn("Inventario Por", typeof(String));
             tabla.Columns.Add(columna);
             columna = new DataColumn("Conciliación", typeof(String));
-            tabla.Columns.Add(columna);
+            tabla.Columns.Add(columna);*/
             List<Activo> lista = new Activo().GetListaActivos(Session["filtroActivos"].ToString());
             foreach(Activo ac in lista)
             {
@@ -95,9 +95,9 @@ namespace ActivosDerecho.Controllers
                 row["Nombre y Descripción"] = ac.nombreDescripcion;
                 row["Espacio Físico"] = ac.espacioFisico;
                 row["Encargado"] = ac.encargado;
-                row["Estado"] = ac.estado;
-                row["Inventario Por"] = ac.inventarioPor;
-                row["Conciliación"] = ac.conciliacion;
+                //row["Estado"] = ac.estado;
+                //row["Inventario Por"] = ac.inventarioPor;
+                //row["Conciliación"] = ac.conciliacion;
                 tabla.Rows.Add(row);
             }
             return tabla;

@@ -55,7 +55,7 @@
                             <td>@Html.DisplayFor(x => item.encargado)</td>
                             <!--Esto para saber que poner de acuerdo a un numero-->
                             @{
-                        String estado = (item.estado == 0) ? "Excelente" : (item.estado == 1) ? "Bueno" : "Malo";
+                                String estado = (item.estado == 0) ? "Bueno" : "Malo";
                             }
                             <td>@Html.DisplayFor(x => @estado)</td>
                             <td>@Html.DisplayFor(x => item.inventarioPor)</td>

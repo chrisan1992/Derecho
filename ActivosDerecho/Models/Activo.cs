@@ -78,6 +78,7 @@ namespace ActivosDerecho.Models
                             //busqueda filtrada
                             where SqlMethods.Like(a.placa + "", "%" + filtro + "%")
                              || SqlMethods.Like(a.nombreDescripcion + "", "%" + filtro + "%")
+                             || SqlMethods.Like(a.espacioFisico + "", "%" + filtro + "%")
                              || SqlMethods.Like(a.encargado + "", "%" + filtro + "%")
                              || SqlMethods.Like(a.inventarioPor + "", "%" + filtro + "%")
                              || SqlMethods.Like(a.conciliacion + "", "%" + filtro + "%")
