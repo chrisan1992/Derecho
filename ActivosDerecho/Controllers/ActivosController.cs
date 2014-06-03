@@ -110,7 +110,8 @@ namespace ActivosDerecho.Controllers
         /// <returns></returns>
         public ActionResult Agregar()
         {
-            Boolean activo = System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+			return View();
+            /*Boolean activo = System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
             if (activo)
             {
                 MembershipUser actual = Membership.GetUser();
@@ -127,7 +128,7 @@ namespace ActivosDerecho.Controllers
             else
             {
                 return RedirectToAction("ErrorPermisos", "Home");
-            }
+            }*/
         }
 
         /// <summary>

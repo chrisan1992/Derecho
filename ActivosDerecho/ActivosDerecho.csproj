@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus">
-      <HintPath>..\..\..\..\..\Downloads\EPPlusInAction_Source\EPPlusInAction\EPPlusInAction\EPPlus.dll</HintPath>
+      <HintPath>.\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList">
