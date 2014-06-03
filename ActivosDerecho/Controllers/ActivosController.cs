@@ -111,6 +111,7 @@ namespace ActivosDerecho.Controllers
         public ActionResult Agregar()
         {
 			return View();
+
             /*Boolean activo = System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
             if (activo)
             {
